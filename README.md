@@ -9,11 +9,11 @@ Symbolic Regression is a regression analysis technique, used to develop and find
 
 The data set used in performing this algorithm has been obtained from Smoothing Methods in Statistics in pages 146-147. The data was retrieved from a vineyard on a small island in Lake Erie. The vineyard was divided into 52 rows, in accordance with the 52 observations in the data sets. Each observation having the yields of the harvests measured by the total number of lugs, in the years 1989 , 1990 and 1991 separated by row. A lug is a basket container used to carry the plucked grapes, which holds approximately 13.6078 kilograms of grapes.
 
-The row numbers are  ordered naturally, with row number increasing in the notion from northwest to southeast.\cite{web:lang:stats} The original dataset has been split randomly with 70\% being the training set and 30\% being the testing set. 
+The row numbers are  ordered naturally, with row number increasing in the notion from northwest to southeast.\cite{web:lang:stats} The original dataset has been split randomly with 70\% being the training set and 30% being the testing set. 
 
 ### Dataset Statistics
 
-Title of Data Set: 192 vineyard
+Title of Data Set: 192 vineyard //
 Variables : 3 
 Observations : 52 
 Attribute Characteristics: Continuous 
