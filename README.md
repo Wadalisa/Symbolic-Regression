@@ -13,13 +13,20 @@ The row numbers are  ordered naturally, with row number increasing in the notion
 
 ### Dataset Statistics
 
-Title of Data Set: 192 vineyard //
+Title of Data Set: 192 vineyard
+
 Variables : 3 
-Observations : 52 
+
+Observations : 52
+
 Attribute Characteristics: Continuous 
+
 Missing Values: No
+
 Duplicate rows : 1 
+
 Further data pre-processing was made, by dropping duplicates in the dataset.
+
 
 ## Data Representation
 
@@ -31,13 +38,6 @@ The initial population was generated using the growth method. The growth method 
 
 A fitness function is a function used to calculate and assign a non-negative value, to evaluate how best suited an individual of the population.
 In order to calculate a fitness function , the use of the mean absolute error is used to evaluate each equation -individual of the population.
-$$
-  \text{MAE} = \frac{1}{n} \sum \limits _{i = 1} ^{n} | Y_{i} - \hat{Y}_{i} |
-$$
-where :
-n is the population size
-$Y_{i}$ is the Y target, which is the number of lugs yielded in 1991
-$\hat{Y}_{i}$ is the predicted value of Y, number of lugs yielded in 1991
 
 ## Selection Methods
 
@@ -47,7 +47,7 @@ A selection method randomly selects two or more individuals in the population as
 
 ### Elitism
 
-Elitism is a genetic operator which is used to keep the individuals with the best fitness scores, for the next generation. 10\% of the population is selected during Elitism for the new population.
+Elitism is a genetic operator which is used to keep the individuals with the best fitness scores, for the next generation. 10% of the population is selected during Elitism for the new population.
 
 ### Crossover Operator
 
@@ -64,24 +64,30 @@ The maximum number of tree depth, number of generations and population size made
 ## Parameters
 
 Population size: 500
+
 A large population size is used to increase population diversity.
 
 Crossover Rate: 80% 
+
 Crossover is applied against the individuals, if the random float is less than the crossover rate, crossover should occur, if crossover doesn't occur the individual should be added as is to the new population.
 
 Mutation Rate: 15%
+
 Mutation is applied against the individuals, if the random float is less than the mutation rate, mutation should occur, if mutation doesn't occur the individual should be added as it is.
 
 Elistism Rate: 5%
 
 Maximum tree depth = 3 
+
 To control the growth of the trees generated, a max tree depth is used. After multiple simulations, the tree depth of 3, grew trees that were manageable and weren't too large to create noise.
 
 Initial Population Generation Method: Growth Method
 
 Functional set: {+,-,/,*}
+
 Basic mathematical operands are used, these operands are stored as strings in the array. This assists with the creation of an expression tree, which is more interpretable and a regressor can be stored.
 
 Terminal set: {x1,x2,c}
+
 The terminal set consists of x1 which represents $x_{1}$ for the number of lugs produced in the year 1989 and x2 which represents $x_{2}$  for the number of lugs produced in 1990. After trail and error, a constant,c, with the value of 2, seemed to generate a better regressor.
 
