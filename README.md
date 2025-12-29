@@ -1,93 +1,141 @@
-# Symbolic-Regression
+# 🧮⚔️ SYMBOLIC REGRESSION — MAIN QUEST
 
-## Introduction
+> *“Find the hidden formula. Conquer the vineyard.”*
 
-Symbolic Regression is a regression analysis technique, used to develop and find interpretable mathematical expressions. Symbolic Regression will be used to generate a mathematical equation known as a regressor. A regressor will be used to calculate the lugs produced in 1991 in the vineyard dataset. With the use of Genetic Programming a regressor will be generated using methods below.
+---
 
-## Dataset Used
+## 🗺️ Quest Overview
+
+**Symbolic Regression** is a regression technique used to generate **interpretable mathematical expressions**.  
+
+In this project, Genetic Programming (GP) is used to create a **regressor** to predict the number of **lugs** produced in 1991 using the vineyard dataset. The GP evolves candidate equations over generations to find the best fit.
+
+---
+
+## 📊 DATASET — VINEYARD QUEST MAP
+
+The dataset is taken from *Smoothing Methods in Statistics* (pages 146–147). It contains harvest data from a vineyard on a small island in Lake Erie:
+
+- **Rows:** 52 (northwest → southeast)
+- **Observations per row:** Number of lugs harvested in 1989, 1990, and 1991
+- **Lug weight:** ~13.6078 kg of grapes per lug
+- **Train/Test Split:** 70% training, 30% testing
+- **Duplicate Rows:** Dropped during preprocessing
+
+### 🧩 Dataset Statistics
+
+- **Title:** `192 vineyard`
+- **Variables:** 3  
+- **Observations:** 52  
+- **Attribute Type:** Continuous  
+- **Missing Values:** None  
+- **Duplicate Rows:** 1 (dropped during preprocessing)
+
+---
+
+## 🌳 MODEL REPRESENTATION — SKILL TREE
+
+The GP regressor is represented as an **Expression Tree**:
+
+- **Internal Nodes:** Operators from the functional set  
+- **Leaf Nodes:** Operands from the terminal set or functional set
+
+Expression trees allow flexible node manipulation and easy evaluation of candidate equations.
+
+### 🌱 Initial Population
+
+- **Generation Method:** Growth Method  
+- **Initial Tree Depth:** 0 → start with simple trees
+
+---
+
+## 📐 FITNESS FUNCTION — DAMAGE CALCULATION
+
+**Mean Absolute Error (MAE)** is used to evaluate each individual.  
+
+- Always **non-negative**  
+- Robust to outliers  
+- Lower MAE indicates a stronger regressor  
+
+---
+
+## 🎯 SELECTION METHOD — PARTY RECRUITMENT
+
+**Tournament Selection** is used:
+
+- Randomly pick `k` individuals from the population  
+- Select the one with the **lowest fitness score**  
+- Chosen parents reproduce for the next generation
+
+---
+
+## 🧬 GENETIC OPERATORS — EVOLUTION MECHANICS
+
+### 🏆 Elitism
+
+- Keeps top 10% of individuals for the next generation  
+- Ensures strong candidates are preserved
+
+---
+
+### 🔀 Crossover Operator
+
+- Swaps subtrees between parents at a random point  
+- **Crossover Rate:** 80%  
+- Stricter rule: if offspring fitness > parent, crossover retries  
+
+---
+
+### 🧫 Mutation Operator
+
+- Replaces a node at a random point with a new subtree  
+- **Mutation Rate:** 15%  
+- Stricter rule: if mutated fitness > parent, mutation retries  
+
+---
+
+## ⏹️ TERMINATION CRITERIA
+
+- Maximum **tree depth**  
+- Maximum **number of generations**  
+- **Population size**
+
+---
+
+## ⚙️ PARAMETERS — BUILD STATS
+
+- **Population Size:** 500 → encourages diversity  
+- **Crossover Rate:** 80%  
+- **Mutation Rate:** 15%  
+- **Elitism Rate:** 5%  
+- **Maximum Tree Depth:** 3 → manageable tree growth  
+- **Initial Population Method:** Growth Method  
+
+---
+
+### ➕ Functional & Terminal Sets
+
+**Functional Set:**  
+{ +, -, *, / }
 
 
-The data set used in performing this algorithm has been obtained from Smoothing Methods in Statistics in pages 146-147. The data was retrieved from a vineyard on a small island in Lake Erie. The vineyard was divided into 52 rows, in accordance with the 52 observations in the data sets. Each observation having the yields of the harvests measured by the total number of lugs, in the years 1989 , 1990 and 1991 separated by row. A lug is a basket container used to carry the plucked grapes, which holds approximately 13.6078 kilograms of grapes.
-
-The row numbers are  ordered naturally, with row number increasing in the notion from northwest to southeast.\cite{web:lang:stats} The original dataset has been split randomly with 70\% being the training set and 30% being the testing set. 
-
-### Dataset Statistics
-
-Title of Data Set: 192 vineyard
-
-Variables : 3 
-
-Observations : 52
-
-Attribute Characteristics: Continuous 
-
-Missing Values: No
-
-Duplicate rows : 1 
-
-Further data pre-processing was made, by dropping duplicates in the dataset.
+**Terminal Set:**  
 
 
-## Data Representation
+{ x1, x2, c }
 
-The regressor is represented as an expression tree. Each individual of the tree is made up of the root node that is randomly selected from the functional set and the leaf nodes that are randomly selected from either the terminal set or functional set, to create expressions. An expression tree is known for its flexibility.Expression trees make it easier for the information at nodes to be accessed and manipulated.
+- `x1` → lugs produced in 1989  
+- `x2` → lugs produced in 1990  
+- `c` → constant (value = 2, tuned for better regressors)
 
-The initial population was generated using the growth method. The growth method generates a tree with an initial depth of n. In this report, the initial depth of the tree is 0, to start generating simple trees.
+---
 
-## Fitness Function
+## 🏁 QUEST STATUS
 
-A fitness function is a function used to calculate and assign a non-negative value, to evaluate how best suited an individual of the population.
-In order to calculate a fitness function , the use of the mean absolute error is used to evaluate each equation -individual of the population.
+🧩 **Main Quest:** Symbolic Regression with Genetic Programming  
+🚀 **Objective:** Predict 1991 grape harvests with an interpretable formula  
+🏆 **Reward:** A robust mathematical regressor for the vineyard dataset  
 
-## Selection Methods
+---
 
-A selection method randomly selects two or more individuals in the population as parents for the next generation. In this report, tournament selection is the selection method of choice. For k individuals, a random number of individuals are selected, for n, number of parents. The individuals with the smallest fitness score is selected for reproduction.
-
-## Genetic Operators 
-
-### Elitism
-
-Elitism is a genetic operator which is used to keep the individuals with the best fitness scores, for the next generation. 10% of the population is selected during Elitism for the new population.
-
-### Crossover Operator
-
-Crossover is a genetic operator used to reproduce the selected parents. A random integer is generated as a point. Parents at that point will swap to create new individuals of the population.60\% is generated using the cross-over genetic operator.A stricter crossover is applied against the individuals. The individual's fitness score is evaluated, and where the individual's fitness score is more than that of the parent, crossover should occur again.
-
-### Mutation Operator
-
-In mutation a individual taken from the population.A random integer is generated as a point. A new individual will be generated and inserted at the point. 15% of the generation will be made up using the mutation operator.\\ A stricter mutation, where after mutation, the individual's fitness score is evaluated. In the case where the mutated individual's fitness score is more than that of the parent, mutation should occur again.
-
-## Termination Criterion
-
-The maximum number of tree depth, number of generations and population size made the termination criterion, in this report.
-
-## Parameters
-
-Population size: 500
-
-A large population size is used to increase population diversity.
-
-Crossover Rate: 80% 
-
-Crossover is applied against the individuals, if the random float is less than the crossover rate, crossover should occur, if crossover doesn't occur the individual should be added as is to the new population.
-
-Mutation Rate: 15%
-
-Mutation is applied against the individuals, if the random float is less than the mutation rate, mutation should occur, if mutation doesn't occur the individual should be added as it is.
-
-Elistism Rate: 5%
-
-Maximum tree depth = 3 
-
-To control the growth of the trees generated, a max tree depth is used. After multiple simulations, the tree depth of 3, grew trees that were manageable and weren't too large to create noise.
-
-Initial Population Generation Method: Growth Method
-
-Functional set: {+,-,/,*}
-
-Basic mathematical operands are used, these operands are stored as strings in the array. This assists with the creation of an expression tree, which is more interpretable and a regressor can be stored.
-
-Terminal set: {x1,x2,c}
-
-The terminal set consists of x1 which represents $x_{1}$ for the number of lugs produced in the year 1989 and x2 which represents $x_{2}$  for the number of lugs produced in 1990. After trail and error, a constant,c, with the value of 2, seemed to generate a better regressor.
-
+*Honours-level project — built for evolution, not brute force.*
